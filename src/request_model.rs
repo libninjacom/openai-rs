@@ -6,7 +6,7 @@ pub struct ListEnginesRequest<'a> {
     pub(crate) client: &'a OpenAiClient,
 }
 impl<'a> ListEnginesRequest<'a> {
-    pub async fn send(self) -> anyhow::Result<model::ListEnginesResponse> {
+    pub async fn send(self) -> anyhow::Result<ListEnginesResponse> {
         let mut r = self.client.client.get("/engines");
         let res = r.send().await.unwrap().error_for_status();
         match res {
@@ -23,7 +23,7 @@ pub struct RetrieveEngineRequest<'a> {
     pub engine_id: String,
 }
 impl<'a> RetrieveEngineRequest<'a> {
-    pub async fn send(self) -> anyhow::Result<model::Engine> {
+    pub async fn send(self) -> anyhow::Result<Engine> {
         let mut r = self
             .client
             .client
@@ -58,7 +58,7 @@ pub struct CreateCompletionRequest<'a> {
     pub user: String,
 }
 impl<'a> CreateCompletionRequest<'a> {
-    pub async fn send(self) -> anyhow::Result<model::CreateCompletionResponse> {
+    pub async fn send(self) -> anyhow::Result<CreateCompletionResponse> {
         let mut r = self.client.client.post("/completions");
         r = r.push_json(json!({ "model" : self.model }));
         r = r.push_json(json!({ "prompt" : self.prompt }));
@@ -102,7 +102,7 @@ pub struct CreateEditRequest<'a> {
     pub top_p: f64,
 }
 impl<'a> CreateEditRequest<'a> {
-    pub async fn send(self) -> anyhow::Result<model::CreateEditResponse> {
+    pub async fn send(self) -> anyhow::Result<CreateEditResponse> {
         let mut r = self.client.client.post("/edits");
         r = r.push_json(json!({ "model" : self.model }));
         r = r.push_json(json!({ "input" : self.input }));
@@ -127,7 +127,7 @@ pub struct CreateEmbeddingRequest<'a> {
     pub user: String,
 }
 impl<'a> CreateEmbeddingRequest<'a> {
-    pub async fn send(self) -> anyhow::Result<model::CreateEmbeddingResponse> {
+    pub async fn send(self) -> anyhow::Result<CreateEmbeddingResponse> {
         let mut r = self.client.client.post("/embeddings");
         r = r.push_json(json!({ "model" : self.model }));
         r = r.push_json(json!({ "input" : self.input }));
@@ -153,7 +153,7 @@ pub struct CreateSearchRequest<'a> {
     pub user: String,
 }
 impl<'a> CreateSearchRequest<'a> {
-    pub async fn send(self) -> anyhow::Result<model::CreateSearchResponse> {
+    pub async fn send(self) -> anyhow::Result<CreateSearchResponse> {
         let mut r = self
             .client
             .client
@@ -178,7 +178,7 @@ pub struct ListFilesRequest<'a> {
     pub(crate) client: &'a OpenAiClient,
 }
 impl<'a> ListFilesRequest<'a> {
-    pub async fn send(self) -> anyhow::Result<model::ListFilesResponse> {
+    pub async fn send(self) -> anyhow::Result<ListFilesResponse> {
         let mut r = self.client.client.get("/files");
         let res = r.send().await.unwrap().error_for_status();
         match res {
@@ -194,7 +194,7 @@ pub struct CreateFileRequest<'a> {
     pub(crate) client: &'a OpenAiClient,
 }
 impl<'a> CreateFileRequest<'a> {
-    pub async fn send(self) -> anyhow::Result<model::OpenAiFile> {
+    pub async fn send(self) -> anyhow::Result<OpenAiFile> {
         let mut r = self.client.client.post("/files");
         let res = r.send().await.unwrap().error_for_status();
         match res {
@@ -211,7 +211,7 @@ pub struct RetrieveFileRequest<'a> {
     pub file_id: String,
 }
 impl<'a> RetrieveFileRequest<'a> {
-    pub async fn send(self) -> anyhow::Result<model::OpenAiFile> {
+    pub async fn send(self) -> anyhow::Result<OpenAiFile> {
         let mut r = self
             .client
             .client
@@ -231,7 +231,7 @@ pub struct DeleteFileRequest<'a> {
     pub file_id: String,
 }
 impl<'a> DeleteFileRequest<'a> {
-    pub async fn send(self) -> anyhow::Result<model::DeleteFileResponse> {
+    pub async fn send(self) -> anyhow::Result<DeleteFileResponse> {
         let mut r = self
             .client
             .client
@@ -251,7 +251,7 @@ pub struct DownloadFileRequest<'a> {
     pub file_id: String,
 }
 impl<'a> DownloadFileRequest<'a> {
-    pub async fn send(self) -> anyhow::Result<model::String> {
+    pub async fn send(self) -> anyhow::Result<String> {
         let mut r = self
             .client
             .client
@@ -288,7 +288,7 @@ pub struct CreateAnswerRequest<'a> {
     pub user: String,
 }
 impl<'a> CreateAnswerRequest<'a> {
-    pub async fn send(self) -> anyhow::Result<model::CreateAnswerResponse> {
+    pub async fn send(self) -> anyhow::Result<CreateAnswerResponse> {
         let mut r = self.client.client.post("/answers");
         r = r.push_json(json!({ "model" : self.model }));
         r = r.push_json(json!({ "question" : self.question }));
@@ -342,7 +342,7 @@ pub struct CreateClassificationRequest<'a> {
     pub user: String,
 }
 impl<'a> CreateClassificationRequest<'a> {
-    pub async fn send(self) -> anyhow::Result<model::CreateClassificationResponse> {
+    pub async fn send(self) -> anyhow::Result<CreateClassificationResponse> {
         let mut r = self.client.client.post("/classifications");
         r = r.push_json(json!({ "model" : self.model }));
         r = r.push_json(json!({ "query" : self.query }));
@@ -378,7 +378,7 @@ pub struct ListFineTunesRequest<'a> {
     pub(crate) client: &'a OpenAiClient,
 }
 impl<'a> ListFineTunesRequest<'a> {
-    pub async fn send(self) -> anyhow::Result<model::ListFineTunesResponse> {
+    pub async fn send(self) -> anyhow::Result<ListFineTunesResponse> {
         let mut r = self.client.client.get("/fine-tunes");
         let res = r.send().await.unwrap().error_for_status();
         match res {
@@ -406,7 +406,7 @@ pub struct CreateFineTuneRequest<'a> {
     pub suffix: String,
 }
 impl<'a> CreateFineTuneRequest<'a> {
-    pub async fn send(self) -> anyhow::Result<model::FineTune> {
+    pub async fn send(self) -> anyhow::Result<FineTune> {
         let mut r = self.client.client.post("/fine-tunes");
         r = r.push_json(json!({ "training_file" : self.training_file }));
         r = r.push_json(json!({ "validation_file" : self.validation_file }));
@@ -453,7 +453,7 @@ pub struct RetrieveFineTuneRequest<'a> {
     pub fine_tune_id: String,
 }
 impl<'a> RetrieveFineTuneRequest<'a> {
-    pub async fn send(self) -> anyhow::Result<model::FineTune> {
+    pub async fn send(self) -> anyhow::Result<FineTune> {
         let mut r = self
             .client
             .client
@@ -475,7 +475,7 @@ pub struct CancelFineTuneRequest<'a> {
     pub fine_tune_id: String,
 }
 impl<'a> CancelFineTuneRequest<'a> {
-    pub async fn send(self) -> anyhow::Result<model::FineTune> {
+    pub async fn send(self) -> anyhow::Result<FineTune> {
         let mut r = self
             .client
             .client
@@ -500,7 +500,7 @@ pub struct ListFineTuneEventsRequest<'a> {
     pub stream: Option<bool>,
 }
 impl<'a> ListFineTuneEventsRequest<'a> {
-    pub async fn send(self) -> anyhow::Result<model::ListFineTuneEventsResponse> {
+    pub async fn send(self) -> anyhow::Result<ListFineTuneEventsResponse> {
         let mut r = self
             .client
             .client
@@ -530,7 +530,7 @@ pub struct ListModelsRequest<'a> {
     pub(crate) client: &'a OpenAiClient,
 }
 impl<'a> ListModelsRequest<'a> {
-    pub async fn send(self) -> anyhow::Result<model::ListModelsResponse> {
+    pub async fn send(self) -> anyhow::Result<ListModelsResponse> {
         let mut r = self.client.client.get("/models");
         let res = r.send().await.unwrap().error_for_status();
         match res {
@@ -547,7 +547,7 @@ pub struct RetrieveModelRequest<'a> {
     pub model: String,
 }
 impl<'a> RetrieveModelRequest<'a> {
-    pub async fn send(self) -> anyhow::Result<model::Model> {
+    pub async fn send(self) -> anyhow::Result<Model> {
         let mut r = self
             .client
             .client
@@ -567,7 +567,7 @@ pub struct DeleteModelRequest<'a> {
     pub model: String,
 }
 impl<'a> DeleteModelRequest<'a> {
-    pub async fn send(self) -> anyhow::Result<model::DeleteModelResponse> {
+    pub async fn send(self) -> anyhow::Result<DeleteModelResponse> {
         let mut r = self
             .client
             .client
