@@ -1,7 +1,7 @@
 [package]
 name = "openai2"
 edition = "2021"
-version = "1.0.0"
+version = "2.0.0"
 description = "OpenAi client, generated from the OpenAPI spec."
 homepage = "https://github.com/libninjacom/openai-rs"
 documentation = "https://docs.rs/openai2"
@@ -9,9 +9,12 @@ readme = "README.md"
 license = "MIT"
 repository = "https://github.com/libninjacom/openai-rs"
 
+[workspace]
+members = []
+
 [dependencies]
 anyhow = "1.0.57"
-httpclient = "0.5.0"
+httpclient = "0.6.0"
 serde_json = "1.0.81"
 
 [dependencies.serde]
@@ -30,4 +33,172 @@ plugin = false
 proc-macro = false
 edition = "2021"
 crate-type = ["rlib"]
+required-features = []
+
+[[example]]
+path = "examples/cancel_fine_tune.rs"
+name = "cancel_fine_tune"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[example]]
+path = "examples/create_answer.rs"
+name = "create_answer"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[example]]
+path = "examples/create_classification.rs"
+name = "create_classification"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[example]]
+path = "examples/create_completion.rs"
+name = "create_completion"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[example]]
+path = "examples/create_edit.rs"
+name = "create_edit"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[example]]
+path = "examples/create_embedding.rs"
+name = "create_embedding"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[example]]
+path = "examples/create_file.rs"
+name = "create_file"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[example]]
+path = "examples/create_fine_tune.rs"
+name = "create_fine_tune"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[example]]
+path = "examples/create_search.rs"
+name = "create_search"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[example]]
+path = "examples/delete_file.rs"
+name = "delete_file"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[example]]
+path = "examples/delete_model.rs"
+name = "delete_model"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[example]]
+path = "examples/download_file.rs"
+name = "download_file"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[example]]
+path = "examples/list_engines.rs"
+name = "list_engines"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[example]]
+path = "examples/list_files.rs"
+name = "list_files"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[example]]
+path = "examples/list_fine_tune_events.rs"
+name = "list_fine_tune_events"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[example]]
+path = "examples/list_fine_tunes.rs"
+name = "list_fine_tunes"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[example]]
+path = "examples/list_models.rs"
+name = "list_models"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[example]]
+path = "examples/retrieve_engine.rs"
+name = "retrieve_engine"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[example]]
+path = "examples/retrieve_file.rs"
+name = "retrieve_file"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[example]]
+path = "examples/retrieve_fine_tune.rs"
+name = "retrieve_fine_tune"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[example]]
+path = "examples/retrieve_model.rs"
+name = "retrieve_model"
+plugin = false
+proc-macro = false
+edition = "2021"
 required-features = []

@@ -20,11 +20,44 @@
 
 </p>
 
-
-
 OpenAi client, generated from the OpenAPI spec.
 
-# [Documentation](https://docs.rs/openai2)
+# Usage
+
+```rust
+use openai2::OpenAiClient;
+use openai2::model::*;
+#[tokio::main]
+async fn main() {
+    let client = OpenAiClient::from_env();
+    let response = client.list_engines().send().await.unwrap();
+    println!("{:#?}", response);
+}
+
+```
+
+This example loads configuration from environment variables, specifically:
+
+
+
+# Installation
+
+Add this to your Cargo.toml:
+
+```toml
+[dependencies]
+openai2 = "2.0.0"
+```
+
+
+# Documentation
+
+
+
+* [Client Library Documentation](https://docs.rs/openai2)
+
+
+You can see working examples of every API call in the `examples/` directory.
 
 # Contributing
 
