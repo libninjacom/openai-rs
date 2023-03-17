@@ -65,11 +65,19 @@ impl<'a> CreateClassificationRequest<'a> {
         if let Some(ref unwrapped) = self.user {
             r = r.json(json!({ "user" : unwrapped }));
         }
+        r = self.http_client.authenticate(r);
         let res = r.send_awaiting_body().await?;
         res.json()
     }
     pub fn examples(mut self, examples: &[&[&str]]) -> Self {
-        self.examples = Some(examples.to_owned());
+        self.examples = Some(examples
+            .into_iter()
+            .map(|s| s
+                .into_iter()
+                .map(|&s| s.to_owned())
+                .collect()
+            ).collect()
+        );
         self
     }
     pub fn expand(mut self, expand: Vec<serde_json::Value>) -> Self {

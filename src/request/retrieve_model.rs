@@ -15,6 +15,7 @@ impl<'a> RetrieveModelRequest<'a> {
             .http_client
             .client
             .get(&format!("/models/{model}", model = self.model));
+        r = self.http_client.authenticate(r);
         let res = r.send_awaiting_body().await?;
         res.json()
     }

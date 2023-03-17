@@ -17,6 +17,7 @@ impl<'a> CreateModerationRequest<'a> {
         if let Some(ref unwrapped) = self.model {
             r = r.json(json!({ "model" : unwrapped }));
         }
+        r = self.http_client.authenticate(r);
         let res = r.send_awaiting_body().await?;
         res.json()
     }

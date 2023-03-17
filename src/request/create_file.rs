@@ -11,6 +11,7 @@ pub struct CreateFileRequest<'a> {
 impl<'a> CreateFileRequest<'a> {
     pub async fn send(self) -> ::httpclient::InMemoryResult<OpenAiFile> {
         let mut r = self.http_client.client.post("/files");
+        r = self.http_client.authenticate(r);
         let res = r.send_awaiting_body().await?;
         res.json()
     }

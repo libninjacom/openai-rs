@@ -19,6 +19,7 @@ impl<'a> CancelFineTuneRequest<'a> {
                     "/fine-tunes/{fine_tune_id}/cancel", fine_tune_id = self.fine_tune_id
                 ),
             );
+        r = self.http_client.authenticate(r);
         let res = r.send_awaiting_body().await?;
         res.json()
     }

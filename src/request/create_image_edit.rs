@@ -11,6 +11,7 @@ pub struct CreateImageEditRequest<'a> {
 impl<'a> CreateImageEditRequest<'a> {
     pub async fn send(self) -> ::httpclient::InMemoryResult<ImagesResponse> {
         let mut r = self.http_client.client.post("/images/edits");
+        r = self.http_client.authenticate(r);
         let res = r.send_awaiting_body().await?;
         res.json()
     }

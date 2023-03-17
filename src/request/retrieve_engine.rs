@@ -15,6 +15,7 @@ impl<'a> RetrieveEngineRequest<'a> {
             .http_client
             .client
             .get(&format!("/engines/{engine_id}", engine_id = self.engine_id));
+        r = self.http_client.authenticate(r);
         let res = r.send_awaiting_body().await?;
         res.json()
     }

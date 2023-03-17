@@ -31,6 +31,7 @@ impl<'a> CreateEditRequest<'a> {
         if let Some(ref unwrapped) = self.top_p {
             r = r.json(json!({ "top_p" : unwrapped }));
         }
+        r = self.http_client.authenticate(r);
         let res = r.send_awaiting_body().await?;
         res.json()
     }

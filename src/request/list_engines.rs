@@ -11,6 +11,7 @@ pub struct ListEnginesRequest<'a> {
 impl<'a> ListEnginesRequest<'a> {
     pub async fn send(self) -> ::httpclient::InMemoryResult<ListEnginesResponse> {
         let mut r = self.http_client.client.get("/engines");
+        r = self.http_client.authenticate(r);
         let res = r.send_awaiting_body().await?;
         res.json()
     }

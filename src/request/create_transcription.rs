@@ -13,6 +13,7 @@ impl<'a> CreateTranscriptionRequest<'a> {
         self,
     ) -> ::httpclient::InMemoryResult<CreateTranscriptionResponse> {
         let mut r = self.http_client.client.post("/audio/transcriptions");
+        r = self.http_client.authenticate(r);
         let res = r.send_awaiting_body().await?;
         res.json()
     }

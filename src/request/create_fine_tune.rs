@@ -57,6 +57,7 @@ impl<'a> CreateFineTuneRequest<'a> {
         if let Some(ref unwrapped) = self.validation_file {
             r = r.json(json!({ "validation_file" : unwrapped }));
         }
+        r = self.http_client.authenticate(r);
         let res = r.send_awaiting_body().await?;
         res.json()
     }

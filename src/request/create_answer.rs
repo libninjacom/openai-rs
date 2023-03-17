@@ -75,6 +75,7 @@ impl<'a> CreateAnswerRequest<'a> {
         if let Some(ref unwrapped) = self.user {
             r = r.json(json!({ "user" : unwrapped }));
         }
+        r = self.http_client.authenticate(r);
         let res = r.send_awaiting_body().await?;
         res.json()
     }

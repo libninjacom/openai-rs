@@ -23,6 +23,7 @@ impl<'a> ListFineTuneEventsRequest<'a> {
         if let Some(ref unwrapped) = self.stream {
             r = r.query("stream", &unwrapped.to_string());
         }
+        r = self.http_client.authenticate(r);
         let res = r.send_awaiting_body().await?;
         res.json()
     }

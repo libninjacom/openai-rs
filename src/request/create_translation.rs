@@ -11,6 +11,7 @@ pub struct CreateTranslationRequest<'a> {
 impl<'a> CreateTranslationRequest<'a> {
     pub async fn send(self) -> ::httpclient::InMemoryResult<CreateTranslationResponse> {
         let mut r = self.http_client.client.post("/audio/translations");
+        r = self.http_client.authenticate(r);
         let res = r.send_awaiting_body().await?;
         res.json()
     }

@@ -17,6 +17,7 @@ impl<'a> RetrieveFineTuneRequest<'a> {
             .get(
                 &format!("/fine-tunes/{fine_tune_id}", fine_tune_id = self.fine_tune_id),
             );
+        r = self.http_client.authenticate(r);
         let res = r.send_awaiting_body().await?;
         res.json()
     }

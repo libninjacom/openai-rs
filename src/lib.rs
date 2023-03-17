@@ -31,7 +31,11 @@ impl OpenAiClient {
         &self,
         mut r: httpclient::RequestBuilder<'a>,
     ) -> httpclient::RequestBuilder<'a> {
-        match &self.authentication {}
+        match &self.authentication {
+            OpenAiAuthentication::Bearer { bearer } => {
+                r = r.bearer_auth(bearer);
+            }
+        }
         r
     }
     pub fn with_middleware<M: httpclient::Middleware + 'static>(
@@ -229,7 +233,14 @@ The endpoint first [searches](/docs/api-reference/searches) over provided docume
         request::CreateAnswerRequest {
             http_client: &self,
             documents: None,
-            examples: args.examples.iter().map(|&x| x.to_owned()).collect(),
+            examples: args.examples
+                .into_iter()
+                .map(|&x| x
+                    .into_iter()
+                    .map(|&x| x.to_owned())
+                    .collect()
+                )
+                .collect(),
             examples_context: args.examples_context.to_owned(),
             expand: None,
             file: None,
@@ -379,6 +390,17 @@ Response includes details of the enqueued job including job status and the name 
             http_client: &self,
             input,
             model: None,
+        }
+    }
+}
+pub enum OpenAiAuthentication {
+    Bearer { bearer: String },
+}
+impl OpenAiAuthentication {
+    pub fn from_env() -> Self {
+        Self::Bearer {
+            bearer: std::env::var("OPEN_AI_BEARER")
+                .expect("Environment variable OPEN_AI_BEARER is not set."),
         }
     }
 }

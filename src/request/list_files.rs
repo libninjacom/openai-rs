@@ -11,6 +11,7 @@ pub struct ListFilesRequest<'a> {
 impl<'a> ListFilesRequest<'a> {
     pub async fn send(self) -> ::httpclient::InMemoryResult<ListFilesResponse> {
         let mut r = self.http_client.client.get("/files");
+        r = self.http_client.authenticate(r);
         let res = r.send_awaiting_body().await?;
         res.json()
     }

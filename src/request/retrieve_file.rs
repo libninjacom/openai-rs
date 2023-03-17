@@ -15,6 +15,7 @@ impl<'a> RetrieveFileRequest<'a> {
             .http_client
             .client
             .get(&format!("/files/{file_id}", file_id = self.file_id));
+        r = self.http_client.authenticate(r);
         let res = r.send_awaiting_body().await?;
         res.json()
     }
