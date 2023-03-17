@@ -1,11 +1,11 @@
 <div id="top"></div>
 
 <p align="center">
-    <a href="https://github.com/libninja/openai-rs/stargazers">
-        <img src="https://img.shields.io/github/stars/libninja/openai-rs.svg?style=flat-square" alt="Stars" />
+    <a href="https://github.com/libninjacom/openai-rs/stargazers">
+        <img src="https://img.shields.io/github/stars/libninjacom/openai-rs.svg?style=flat-square" alt="Stars" />
     </a>
-    <a href="https://github.com/libninja/openai-rs/actions">
-        <img src="https://img.shields.io/github/workflow/status/libninja/openai-rs/ci?style=flat-square" alt="Build Status" />
+    <a href="https://github.com/libninjacom/openai-rs/actions">
+        <img src="https://img.shields.io/github/workflow/status/libninjacom/openai-rs/ci?style=flat-square" alt="Build Status" />
     </a>
     
 <a href="https://crates.io/crates/openai">
