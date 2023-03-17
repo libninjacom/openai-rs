@@ -1,5 +1,5 @@
 [package]
-name = "openai"
+name = "openai2"
 edition = "2021"
 version = "0.1.0"
 description = "OpenAi client, generated from the OpenAPI spec."
@@ -8,6 +8,10 @@ documentation = "https://docs.rs/openai"
 readme = "README.md"
 license = "MIT"
 repository = "https://github.com/libninja/openai-rs"
+
+[lib]
+path = "src/lib.rs"
+name = "openai"
 
 [workspace]
 members = []
