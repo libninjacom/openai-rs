@@ -399,8 +399,8 @@ pub enum OpenAiAuthentication {
 impl OpenAiAuthentication {
     pub fn from_env() -> Self {
         Self::Bearer {
-            bearer: std::env::var("OPEN_AI_BEARER")
-                .expect("Environment variable OPEN_AI_BEARER is not set."),
+            bearer: std::env::var("OPENAI_API_KEY")
+                .expect("Environment variable OPENAI_API_KEY is not set."),
         }
     }
 }

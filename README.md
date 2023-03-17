@@ -34,6 +34,8 @@ async fn main() {
 
 This example loads configuration from environment variables, specifically:
 
+- `OPENAI_API_KEY` - Your OpenAI API key
+
 
 
 # Installation
